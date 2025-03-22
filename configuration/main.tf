@@ -34,7 +34,6 @@ resource "azurerm_resource_group" "main" {
 
 module "vnet" {
   source  = "app.terraform.io/TerraformForge/vnet/arm"
-  version = "0.0.2"
 
   resource_group_name       = azurerm_resource_group.main.name
   
