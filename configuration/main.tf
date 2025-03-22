@@ -1,3 +1,5 @@
+
+
 # main.tf
 terraform {
   required_providers {
@@ -11,6 +13,8 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+
 
 ######################################
 # Resource Group Resource Definition #
@@ -42,6 +46,11 @@ module "vnet" {
   vnet_dns_servers          = var.vnet_dns_servers
   subnets                   = var.subnets
   tags                      = var.tags
+
+  credentials "app.terraform.io" {
+    # valid user API token
+    token = "vuK3znfXHSTuTA.atlasv1.  fvtm6KFVj7SiPo9mkR2ik2pw1EWY8yuNOi8jX2YqLUW6QwJfUqxzCddhL7rP0OziDR8"
+  }
 }
 
 
