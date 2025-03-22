@@ -6,6 +6,14 @@ variable "location" {
   type                  = string
   description           = "Name of the location for deployed Azure Resources"
 }
+variable "second_location" {
+  type                  = string
+  description           = "Name of the location for deployed Azure Resources"
+}
+variable "third_location" {
+  type                  = string
+  description           = "Name of the location for deployed Azure Resources"
+}
 
 #######################################
 # Resource Group Variable Definitions #
