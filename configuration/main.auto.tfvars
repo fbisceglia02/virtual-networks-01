@@ -8,7 +8,7 @@ location                            = "italynorth"
 # Resource Group Variable Values #
 ##################################
 
-resource_group_name                 = "value"
+resource_group_name                 = "virtual-networks-01"
 
 ###################################
 # Virtual Network Variable Values #
