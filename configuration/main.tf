@@ -31,24 +31,42 @@ resource "azurerm_resource_group" "main" {
 #   resource_group_name     = azurerm_resource_group.example.name
 # }
 
-resource "azurerm_virtual_network" "main" {
-  name                      = var.vnet_name
-  location                  = var.location
+
+module "vnet" {
+  source  = "app.terraform.io/TerraformForge/vnet/arm"
+  version = "0.0.2"
+
   resource_group_name       = azurerm_resource_group.main.name
-  address_space             = var.vnet_address_space # ["10.0.0.0/16"]
-  dns_servers               = var.vnet_dns_servers # ["10.0.0.4", "10.0.0.5"]
+  
+  vnet_name                 = var.vnet_name
+  vnet_address_space        = var.vnet_address_space
+  vnet_dns_servers          = var.vnet_dns_servers
+  
+  subnets                   = var.subnets
 
-  dynamic "subnet" {
-    for_each = var.subnets
-    content {
-      name                  = subnet.value.name
-      address_prefix        = subnet.value.address_prefixes[0]
-      security_group        = lookup(subnet.value, "security_group", null)
-    }
-  } 
-
-  tags = {
-    environment             = "Production"
-  }
+  tags                      = var.tags
+  # insert required variables here
 }
+
+
+# resource "azurerm_virtual_network" "main" {
+#   name                      = var.vnet_name
+#   location                  = var.location
+#   resource_group_name       = azurerm_resource_group.main.name
+#   address_space             = var.vnet_address_space # ["10.0.0.0/16"]
+#   dns_servers               = var.vnet_dns_servers # ["10.0.0.4", "10.0.0.5"]
+
+#   dynamic "subnet" {
+#     for_each = var.subnets
+#     content {
+#       name                  = subnet.value.name
+#       address_prefix        = subnet.value.address_prefixes[0]
+#       security_group        = lookup(subnet.value, "security_group", null)
+#     }
+#   } 
+
+#   tags = {
+#     environment             = "Production"
+#   }
+# }
 

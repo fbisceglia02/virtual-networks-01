@@ -10,9 +10,9 @@ location                            = "italynorth"
 
 resource_group_name                 = "virtual-networks-01"
 
-###################################
-# Virtual Network Variable Values #
-###################################
+# ###################################
+# # Virtual Network Variable Values #
+# ###################################
 
 vnet_name                           = "CoreServicesVnet"
 
